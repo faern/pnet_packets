@@ -1,0 +1,29 @@
+use std::net::Ipv4Addr;
+
+use pnet::packet::ethernet::EtherType;
+use pnet::util::MacAddr;
+
+use pnet_macros_support::types::*;
+
+/// Represents an Arp packet.
+/// This implementation is not as general as the Arp protocol allows. It's specialized towards
+/// Resolving Ipv4 over Ethernet, which is the most common usecase.
+#[packet]
+pub struct ArpEthernetIpv4 {
+    hardware_type: u16be,
+    #[construct_with(u16)]
+    protocol_type: EtherType,
+    hw_addr_len: u8,
+    protocol_addr_len: u8,
+    opcode: u16be,
+    #[construct_with(u8, u8, u8, u8, u8, u8)]
+    sender_mac: MacAddr,
+    #[construct_with(u8, u8, u8, u8)]
+    sender_ip: Ipv4Addr,
+    #[construct_with(u8, u8, u8, u8, u8, u8)]
+    target_mac: MacAddr,
+    #[construct_with(u8, u8, u8, u8)]
+    target_ip: Ipv4Addr,
+    #[payload]
+    payload: Vec<u8>,
+}
