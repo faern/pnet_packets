@@ -5,7 +5,8 @@ authors = ["Linus Färnstrand <faern@faern.net>"]
 build = "build.rs"
 
 [dependencies.pnet]
-git = "https://github.com/libpnet/libpnet"
+#git = "https://github.com/libpnet/libpnet"
+version = "0.10.0"
 
 [features]
 default = ["with-syntex"]
@@ -20,14 +21,14 @@ version = ">=0.0"
 version = "=0.1.12"
 
 [dependencies.syntex]
-version = "=0.26.0"
+version = "=0.31.0"
 optional = true
 
 [dependencies.pnet_macros]
 optional = true
 default-features = false
 features = []
-version = ">=0.7"
+version = ">=0.9"
 
 [dependencies.pnet_macros_plugin]
 optional = true
@@ -40,5 +41,5 @@ version = ">=0.1"
 time = ">=0.1"
 
 [build-dependencies]
-syntex = { version = "=0.26.0", optional = true }
+syntex = { version = "=0.31.0", optional = true }
 pnet_macros = { version = ">=0.6" }
