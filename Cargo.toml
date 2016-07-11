@@ -5,8 +5,10 @@ authors = ["Linus Färnstrand <faern@faern.net>"]
 build = "build.rs"
 
 [dependencies.pnet]
-#git = "https://github.com/libpnet/libpnet"
-version = "0.10.0"
+#git = "https://github.com/faern/libpnet"
+#branch = "mockpnet"
+version = "0.11.0"
+#path = "../libpnet"
 
 [features]
 default = ["with-syntex"]
